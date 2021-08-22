@@ -1,0 +1,12 @@
+<%- include("../partials/header.ejs") %>
+
+
+<div class="contact-clean">
+    <form action="/block/<%= block_id%>/comments/<%= comment._id %>?_method=PUT" method="POST">
+        <h2 class="text-center">Edit Comment</h2>
+        <div class="form-group"><textarea class="form-control" type="text" name="comment[text]" rows="14"><%= comment.text %></textarea></div>
+        <div class="form-group text-right"><button class="btn btn-primary" type="submit">edit&nbsp;</button></div>
+    </form>
+</div>
+
+<%- include("../partials/footer.ejs") %>

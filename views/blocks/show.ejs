@@ -1,0 +1,99 @@
+<%- include("../partials/header.ejs") %>
+
+
+<div class="article-clean" style="margin-top: 5px;">
+  <div class="container">
+    <div class="row justify-content-center" style="/*border: 1px solid gray;*/border-radius: 5px;margin-left: 0px;">
+      <div class="col-auto col-lg-10 col-xl-8 offset-lg-1 offset-xl-2 align-self-center" style="margin-left: 0px;">
+        <div class="text-center intro" style="padding: 5px;padding-bottom: 36px;padding-top: 10px;padding-right: 6px;padding-left: 6px;">
+                <!-- ========== update ============= -->
+                <% if(currentUser && block.author.id.equals(currentUser._id)){ %>
+                  <div class="dropdown d-flex d-sm-flex d-lg-flex justify-content-start justify-content-sm-start justify-content-lg-start" style="margin: 5px;">
+                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Update&nbsp;</button>
+                      <div class="dropdown-menu" role="menu">
+                        <a class="dropdown-item" role="presentation" href="/block/<%= block._id %>/edit">Edit</a>
+                        <form action="/block/<%= block._id %>?_method=DELETE" method="POST">
+                          <button class="dropdown-item" role="presentation">Delete</button>
+                        </form>
+                      </div>
+                  </div>
+                <% } %>
+                <!-- =========== update end ============== -->
+
+                  <h1 class="text-center" style="font-family: Montserrat, sans-serif;font-weight: bold;">
+                    <%= block.name %>
+                  </h1>
+                  <p class="text-center" style="font-size: 17px;">
+                    <span class="by">by</span>
+                    <a href="#"><%= block.author.username %></a>
+                    <span class="date"><%= moment(block.createdAt).fromNow() %></span>
+                  </p>
+                  <img class="img-fluid border rounded" src="<%= block.image %>" style="padding: 12px;/*border: 1px;*/">
+                </div>
+              <div class="text" style="font-size: large;">
+                <%- block.description %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== comments ===================================== -->
+
+<div class="container" style="padding: 34px;">
+  <div class="heading">
+    <h2 class="text-left" style="font-weight: bold;font-family: Montserrat, sans-serif;margin-top: 11px;">Comments</h2>
+    <hr>
+  </div>
+  <div class="work-experience group">
+      
+
+      <a class="btn btn-info action-button" role="button" href="/block/<%= block._id%>/comments/new">Add Comment</a>    
+
+      <!-- =============== comment ======================  -->
+      <% block.comments.forEach(function(comment){ %>
+      <div class="border rounded shadow-sm item" style="margin: 7px;padding: 25px;">
+          <div class="row">
+              <div class="col-6" style="font-weight: bold;">
+                  <h5 style="font-weight: bold;"><%= comment.author.username %></h5>
+              </div>
+
+              
+              <div class="col">
+
+                <!-- ============= update comments ============= -->
+                <%  if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                  <div class="dropdown d-sm-flex d-lg-flex justify-content-sm-end justify-content-lg-end">
+                  
+
+                    <button class="btn btn-secondary dropdown-toggle float-right" data-toggle="dropdown" aria-expanded="false" type="button" style="background-color: rgba(19, 23, 24, 0.66);">
+                      Update&nbsp;
+                    </button>
+
+
+                  
+                      <div class="dropdown-menu" role="menu">
+                        <a class="dropdown-item" role="presentation" href="/block/<%= block._id%>/comments/<%= comment._id %>/edit">Edit&nbsp;</a>
+                        <form action="/block/<%= block._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                          <button class="dropdown-item" role="presentation">Delete</button>
+                      </form>
+                  </div>
+                  <!-- ========== update comments end ========== -->
+                  </div>
+                  <% } %>
+              </div>
+              <div class="col-md-6">
+                <span class="text-white bg-info border rounded period float-left" id="date" style="padding: 2px;margin: 2px;font-size: 12px;">
+                  <%= moment(comment.createdAt).fromNow() %>
+                </span>
+              </div>
+          </div>
+          <p class="text-muted" style="background-color: rgba(99,203,235,0.19);padding: 8px;color: rgb(0,0,0);margin-top: 6px;"><%= comment.text %></p>
+      </div>
+
+      <% }) %>
+  </div>
+</div>
+
+
+<%- include("../partials/footer.ejs") %>

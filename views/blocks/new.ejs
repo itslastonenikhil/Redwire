@@ -1,0 +1,13 @@
+<%- include("../partials/header.ejs") %>
+
+<div class="contact-clean">
+    <form action="/block" method="POST">
+        <h2 class="text-center">Post</h2>
+        <div class="form-group"><input class="form-control" type="text" placeholder="Title" name="name"></div>
+        <div class="form-group"><input class="form-control" type="text" placeholder="Image URL" name="image"></div>
+        <div class="form-group"><textarea class="form-control" placeholder="description" name="Description" rows="20"></textarea></div>
+        <div class="form-group"><button class="btn btn-primary" type="submit">post&nbsp;</button></div>
+    </form>
+</div>
+
+<%- include("../partials/footer.ejs") %>

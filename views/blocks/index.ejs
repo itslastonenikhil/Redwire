@@ -1,0 +1,23 @@
+<%- include("../partials/header.ejs") %>
+
+<% block.forEach(function(block){ %>
+    <div class="container">
+        <div class="block-content">
+            <div class="clean-blog-post" style="margin: 20px;">
+                <div class="row">
+                    <div class="col-lg-5"><img class="rounded img-fluid" src="<%= block.image %>"></div>
+                    <div class="col-lg-7">
+                        <h3 style="font-size: 30px;padding: 0px;margin-top: 15px;font-family: Montserrat, sans-serif;font-weight: bold;"><%= block.name%></h3>
+                        <div class="info" style="font-size: 18px;"><span class="text-muted"><%=moment(block.createdAt).fromNow() %> by&nbsp;<a href="#"><%= block.author.username %></a></span></div>
+                        
+                        <div class="text-right d-xl-flex justify-content-xl-end">
+                            <a class="btn btn-info btn-lg d-xl-flex" type="button" style="font-size: 17px;" href="/block/<%= block._id %>">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% }) %>
+ 
+<%- include("../partials/footer.ejs") %>

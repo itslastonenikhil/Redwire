@@ -1,0 +1,24 @@
+<%- include("../partials/header.ejs") %>
+
+<!-- <h1>Edit Block</h1> -->
+
+<!-- <form action="/block/<%= block._id%>?_method=PUT" method="POST">
+    <div><input type="text" value="<%= block.name %>" name="block[name]"></div>
+    <div><input type="text" value="<%= block.description %>" name="block[description]"></div>
+    <div> <input type="text" value="<%= block.image %>" name="block[image]"></div>
+    <button>SUBMIT</button>
+</form> -->
+
+<div class="contact-clean">
+    <form action="/block/<%= block._id%>?_method=PUT" method="POST">
+        <h2 class="text-center">Edit Post</h2>
+        <div class="form-group"><input class="form-control" type="text" value="<%= block.name %>" name="block[name]"></div>
+        <div class="form-group"><input class="form-control" value="<%= block.image %>" name="block[image]"></div>
+        <div class="form-group"><textarea class="form-control" name="block[description]" rows="20"><%= block.description %></textarea></div>
+        <div class="form-group"><button class="btn btn-primary" type="submit">edit&nbsp;</button></div>
+    </form>
+</div>
+
+<%- include("../partials/footer.ejs") %>
+<!-- 
+note : block[name], block[description], block[image] are used to group under object block so that it can be updated -->

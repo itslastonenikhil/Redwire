@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>Redwire</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Acme"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Aldrich"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Alfa+Slab+One"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lato:300,400,700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lora"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+    />
+    <link rel="stylesheet" href="/fonts/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="/fonts/ionicons.min.css" />
+    <link rel="stylesheet" href="/css/Article-Clean.css" />
+    <link rel="stylesheet" href="/css/Article-List.css" />
+    <link rel="stylesheet" href="/css/Contact-Form-Clean.css" />
+    <link rel="stylesheet" href="/css/Highlight-Clean.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css"
+    />
+    <link rel="stylesheet" href="/css/Login-Form-Dark.css" />
+    <link rel="stylesheet" href="/css/Navigation-with-Button.css" />
+    <link rel="stylesheet" href="/css/Registration-Form-with-Photo.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+
+  <body>
+    <nav
+      class="navbar navbar-light navbar-expand-md navigation-clean-button"
+      style="height: 72px;"
+    >
+      <div class="container">
+        <a
+          class="navbar-brand"
+          href="/block"
+          style="padding-right: 5px;padding-left: 5px;font-family: Acme, sans-serif;font-size: 29px;"
+          >Redwire</a
+        ><button
+          data-toggle="collapse"
+          class="navbar-toggler"
+          data-target="#navcol-1"
+        >
+          <span class="sr-only">Toggle navigation</span
+          ><span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse d-md-flex justify-content-md-end"
+          id="navcol-1"
+          style="font-family: Aldrich, sans-serif;"
+        >
+        <% if(currentUser){ %>
+          <div
+            class="dropdown"
+            style="margin-right: 10px;margin-left: 0px;font-size: 17px;padding: 4px;font-family: Aldrich, sans-serif;"
+          >
+            <a
+              style="text-decoration: none;"
+              class="dropdown-toggle"
+              data-toggle="dropdown"
+              aria-expanded="false"
+              href="#"
+              ><%= currentUser.username %></a
+            >
+            <div class="dropdown-menu" role="menu">
+              <a class="dropdown-item" role="presentation" href="#"><i class="far fa-user"></i>&nbsp; &nbsp; Profile</a>
+              <a class="dropdown-item" role="presentation" href="/block/new"><i class="far fa-user"></i>&nbsp; &nbsp; Post</a>
+              <a class="dropdown-item" role="presentation" href="#"><i class="fas fa-tools"></i>&nbsp; &nbsp; Settings</a>
+              <hr />
+              <a class="dropdown-item" role="presentation" href="/logout"><i class="fas fa-long-arrow-alt-right"></i>&nbsp; &nbsp;Logout</a>
+            </div>
+          </div>
+        <% } %>
+        <% if(!currentUser){ %>
+            <span class="navbar-text actions">
+                <span><a class="login" href="/login">Log In</a></span>
+                <a class="btn btn-light action-button" role="button" href="/register">Sign Up</a>    
+            </span>
+        <% } %>
+        </div>
+      </div>
+    </nav>
+    
+    
+<div class="container">
+    <% if(error && error.length > 0){ %>
+    <div class="alert alert-danger"><%= error %></div>
+    <% } %> <% if(success && success.length > 0){ %>
+    <div class="alert alert-success"><%= success %></div>
+    <% } %>
+</div>
+    
+  
